@@ -1,0 +1,19 @@
+version: '3'
+services:
+  back-end:
+    image: mariem16041999/my-flask-app
+    ports:
+      - "5000" 
+    environment:
+      - CURRENT_ENVIRONMENT=development
+    #volumes:
+     # - ./nginx-logs:/var/log/nginx
+  front-end:
+    image: mariem16041999/my-front-app
+    ports:
+      - "8080:80"
+    environment:
+      - WS_BACK_URL=http://back-end:5000
+
+    #volumes:
+     # - ./nginx-logs:/var/log/nginx
